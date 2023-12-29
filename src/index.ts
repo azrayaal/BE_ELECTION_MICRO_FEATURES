@@ -1,11 +1,14 @@
 import { AppDataSource } from "./data-source"
-// import { User } from "./entity/User"
 import * as express from "express"
+import NewsRouter from './app/news/router'
 
 AppDataSource.initialize().then(async () => {
     const app = express()
     
     app.use(express.json())
+
+    // router
+    app.use('/api/v1', NewsRouter)
 
      // port
      const Port = 4000
