@@ -30,4 +30,15 @@ export default new class NewsServices {
             }
         }
     }
+
+    async getDetail(id: any) : Promise<object |string> {
+        try {
+            const detail = await this.NewsRepository.findOne({ where: { id } })
+            return detail
+        } catch (error) {
+            return{
+                message: `Oops something went wrong, please see this ==>> ${error}`
+            }
+        }
+    }
 }

@@ -24,4 +24,16 @@ export default new class NewsControllers {
             res.status(500).json({message: error.message})
         }
     }
+
+    async getDetail(req: Request, res: Response){
+        try {
+            const id = req.params.id
+
+            const detail = await NewsServices.getDetail(id)
+
+            res.status(200).json(detail)
+        } catch (error) {
+            res.status(500).json({message: error.message})
+        }
+    }
 }
