@@ -22,8 +22,11 @@ export default new class NewsServices {
 
     async find() : Promise<object | string> {
         try {
-           const news = await this.NewsRepository.find({select: ["id", "title", "date", "author" ]})
-            return news
+           const news = await this.NewsRepository.createQueryBuilder('news')
+           .select(['news.id', 'news.title', 'news.date', 'news.author'])
+           .getMany();
+
+           return news
         } catch (error) {
             return{
                 message: `Oops something went wrong, please see this ==>> ${error}`
