@@ -1,7 +1,6 @@
 import { Repository } from "typeorm";
 import { Party } from "../../entities/Party";
 import { AppDataSource } from "../../data-source";
-import { promises } from "dns";
 
 export default new class PartyServices {
     private readonly PartyRepository: Repository<Party> = AppDataSource.getRepository(Party)
