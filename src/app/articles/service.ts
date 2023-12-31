@@ -1,14 +1,13 @@
 import { Repository } from "typeorm";
-import { News } from "../../entities/News";
+import { Article } from "../../entities/Article";
 import { AppDataSource } from "../../data-source";
-import { title } from "process";
 
 export default new class NewsServices {
-    private readonly NewsRepository: Repository<News> = AppDataSource.getRepository(News)
+    private readonly ArticleRepository: Repository<Article> = AppDataSource.getRepository(Article)
 
     async create(data: any) : Promise<object | string> {
         try {
-            const response = await this.NewsRepository.save(data)
+            const response = await this.ArticleRepository.save(data)
             return {
                 message: "Success, news has been added!",
                 data: response
@@ -22,11 +21,11 @@ export default new class NewsServices {
 
     async find() : Promise<object | string> {
         try {
-           const news = await this.NewsRepository.createQueryBuilder('news')
-           .select(['news.id', 'news.title', 'news.date', 'news.author'])
+           const article = await this.ArticleRepository.createQueryBuilder('article')
+           .select(['article.id', 'article.title', 'article.date', 'article.author'])
            .getMany();
 
-           return news
+           return article
         } catch (error) {
             return{
                 message: `Oops something went wrong, please see this ==>> ${error}`
@@ -36,7 +35,7 @@ export default new class NewsServices {
 
     async getDetail(id: any) : Promise<object |string> {
         try {
-            const detail = await this.NewsRepository.findOne({ where: { id } })
+            const detail = await this.ArticleRepository.findOne({ where: { id } })
             return detail
         } catch (error) {
             return{
