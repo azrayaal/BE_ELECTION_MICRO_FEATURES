@@ -3,6 +3,7 @@ import * as express from "express"
 import ArticleRouter from './app/articles/router'
 import PartyRouter from './app/parties/router'
 import CandidateRouter from './app/candidates/router'
+import VoterRouter from './app/voters/router'
 
 AppDataSource.initialize().then(async () => {
     const app = express()
@@ -13,6 +14,7 @@ AppDataSource.initialize().then(async () => {
     app.use('/api/v1', ArticleRouter)
     app.use('/api/v1', PartyRouter)
     app.use('/api/v1', CandidateRouter)
+    app.use('/api/v1', VoterRouter)
 
      // port
      const Port = 4000
