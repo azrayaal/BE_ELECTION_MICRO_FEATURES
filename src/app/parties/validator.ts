@@ -1,5 +1,4 @@
 const Joi = require('joi')
-.extend(require('@joi/date'));
 
 const PartySchema = Joi.object({
     name: Joi.string()
