@@ -22,9 +22,9 @@ export default new class PartyServices {
 
     async find() : Promise<object | string> {
         try {
-            const party = await this.PartyRepository.find()
+            // const party = await this.PartyRepository.find()
 
-        //    const party = await this.PartyRepository.createQueryBuilder('party').getMany()
+           const party = await this.PartyRepository.createQueryBuilder('party').getMany()
             
            return party
         } catch (error) {
