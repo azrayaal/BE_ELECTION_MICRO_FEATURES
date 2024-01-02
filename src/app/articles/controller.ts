@@ -1,22 +1,35 @@
 import {Request, Response} from "express"
 import ArticleServices from "./service"
 import ArticleSchema from "./validator"
+import cloudinary from "../../libs/cloudinary"
+
+ // cloudinary.upload()
+            // const cloudinaryRes = await cloudinary.destination(value.image)
+            // console.log('Request Payload:', value);
+            // console.log('Request cloudinaryRes:', cloudinaryRes);
 
 
 export default new class ArticleControllers {
 
     async create(req: Request, res: Response){
         try {
-            const data = req.body
+            // const data = req.body
+            const data = {
+                title: req.body.title,
+                image: res.locals.filename, // Make sure this is correct
+                date: req.body.date,
+                author: req.body.author,
+                description: req.body.description
+            };
+            console.log(data)
 
             const {error, value} = ArticleSchema.validate(data)
-
             if(error){
                 return (
                     res.status(400).json(error.details[0].message)
                 )
             }
-
+           
             const response = await ArticleServices.create(value)
             res.status(200).json(response)
 

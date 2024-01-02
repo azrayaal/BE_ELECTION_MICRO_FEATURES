@@ -12,6 +12,11 @@ const ArticleSchema = Joi.object({
         .max(10)
         .required(),
 
+    image: Joi.string()
+        .min(3)
+        .max(200)
+        .required(),
+
     date: Joi.date().format('YYYY-MM-DD').utc(),
 
     description: Joi.string()

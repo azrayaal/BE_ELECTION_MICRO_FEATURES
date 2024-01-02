@@ -9,7 +9,7 @@ export class Candidate {
     @Column()
     name: string
 
-    @Column({nullable: true})
+    @Column({ nullable: true})
     image: string
 
     @Column()

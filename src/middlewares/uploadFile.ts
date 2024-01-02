@@ -10,9 +10,10 @@ export default new class uploadImage {
             destination: (req, file, cb) =>{
                 cb(null, './src/uploads')
             }, 
-           filename: (req, file, cb) =>{
-            cb(null, `${file.filename}-${Date.now()}.png`)
-           }
+            filename: (req, file, cb) => {
+                const filenameWithoutExtension = file.originalname.split('.').slice(0, -1).join('.');
+                cb(null, `${filenameWithoutExtension}-${Date.now()}.png`);
+            },
 
         })
 
@@ -24,6 +25,7 @@ export default new class uploadImage {
                     console.error(`Multer Error: ${error}`);
                     return res.status(400).json({message: `Ooops something went error when you upload image, please see this ==>> ${error}`})
                 } 
+                console.log('image', req.file.filename)
                 res.locals.filename = req.file.filename
                 next()
             })

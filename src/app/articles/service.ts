@@ -7,6 +7,8 @@ export default new class NewsServices {
 
     async create(data: any) : Promise<object | string> {
         try {
+            // console.log('Data received in create:', data);
+            
             const response = await this.ArticleRepository.save(data)
             return {
                 message: "Success, news has been added!",

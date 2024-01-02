@@ -9,7 +9,7 @@ export class Article {
     @Column()
     title: string
 
-    @Column({nullable: true})
+    @Column({ nullable: true})
     image: string
 
     @Column()
