@@ -7,10 +7,10 @@ export default new class ArticleControllers {
 
     async create(req: Request, res: Response){
         try {
-            // const data = req.body
+           
             const data = {
                 title: req.body.title,
-                image: res.locals.filename, // Make sure this is correct
+                image: res.locals.filename, 
                 date: req.body.date,
                 author: req.body.author,
                 description: req.body.description
@@ -25,9 +25,9 @@ export default new class ArticleControllers {
             }
 
             cloudinary.upload()
-            const cloudinaryRes = await cloudinary.destination(value.image)
+            await cloudinary.destination(value.image)
             console.log('Request Payload:', value);
-            console.log('Request cloudinaryRes:', cloudinaryRes);
+            // console.log('Request cloudinaryRes:', cloudinaryRes);
            
             const response = await ArticleServices.create(value)
             res.status(200).json(response)

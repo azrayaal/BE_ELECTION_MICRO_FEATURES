@@ -25,7 +25,7 @@ export default new class uploadImage {
                     console.error(`Multer Error: ${error}`);
                     return res.status(400).json({message: `Ooops something went error when you upload image, please see this ==>> ${error}`})
                 } 
-                console.log('image', req.file.filename)
+                // console.log(req.file.filename)
                 res.locals.filename = req.file.filename
                 next()
             })

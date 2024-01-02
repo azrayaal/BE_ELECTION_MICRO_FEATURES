@@ -6,6 +6,11 @@ const PartySchema = Joi.object({
         .max(15)
         .required(),
 
+    image: Joi.string()
+        .min(3)
+        .max(200)
+        .required(),
+
     chairman: Joi.string()
         .min(3)
         .max(15)

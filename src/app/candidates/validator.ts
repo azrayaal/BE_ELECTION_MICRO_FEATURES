@@ -8,6 +8,11 @@ const CandidateScheme = Joi.object({
 
     number: Joi.number()
         .required(),
+    
+    image: Joi.string()
+        .min(3)
+        .max(200)
+        .required(),
 
     vision_mission: Joi.string()
         .min(20)
