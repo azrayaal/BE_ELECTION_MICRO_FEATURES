@@ -3,12 +3,6 @@ import ArticleServices from "./service"
 import ArticleSchema from "./validator"
 import cloudinary from "../../libs/cloudinary"
 
- // cloudinary.upload()
-            // const cloudinaryRes = await cloudinary.destination(value.image)
-            // console.log('Request Payload:', value);
-            // console.log('Request cloudinaryRes:', cloudinaryRes);
-
-
 export default new class ArticleControllers {
 
     async create(req: Request, res: Response){
@@ -29,6 +23,11 @@ export default new class ArticleControllers {
                     res.status(400).json(error.details[0].message)
                 )
             }
+
+            cloudinary.upload()
+            const cloudinaryRes = await cloudinary.destination(value.image)
+            console.log('Request Payload:', value);
+            console.log('Request cloudinaryRes:', cloudinaryRes);
            
             const response = await ArticleServices.create(value)
             res.status(200).json(response)
