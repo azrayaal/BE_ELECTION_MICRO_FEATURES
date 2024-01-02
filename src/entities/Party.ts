@@ -10,7 +10,7 @@ export class Party {
     name: string
 
     @Column()
-    banner_party: string
+    img_party: string
 
     @Column()
     chairman: string
