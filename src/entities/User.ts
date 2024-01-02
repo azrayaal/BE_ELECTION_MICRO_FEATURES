@@ -10,15 +10,18 @@ export class User {
     fullName: string
 
     @Column()
+    email: string
+
+    @Column()
     address: string
 
     @Column()
-    gender: number
+    gender: string
 
     @Column()
-    userName: number
+    userName: string
 
     @Column()
-    password: number
+    password: string
 
 }

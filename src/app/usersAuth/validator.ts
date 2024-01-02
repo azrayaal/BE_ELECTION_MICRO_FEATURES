@@ -12,6 +12,10 @@ const UserScheme = Joi.object({
     gender: Joi.string()
         .required(),
 
+    email: Joi.string()
+        .email()
+        .required(),
+
     userName: Joi.string()
         .required(),
 

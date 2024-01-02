@@ -4,6 +4,7 @@ import ArticleRouter from './app/articles/router'
 import PartyRouter from './app/parties/router'
 import CandidateRouter from './app/candidates/router'
 import VoterRouter from './app/voters/router'
+import UserAuthRouter from './app/usersAuth/router'
 
 AppDataSource.initialize().then(async () => {
     const app = express()
@@ -15,6 +16,7 @@ AppDataSource.initialize().then(async () => {
     app.use('/api/v1', PartyRouter)
     app.use('/api/v1', CandidateRouter)
     app.use('/api/v1', VoterRouter)
+    app.use('/api/v1', UserAuthRouter)
 
      // port
      const Port = 4000
