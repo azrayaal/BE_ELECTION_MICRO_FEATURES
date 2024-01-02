@@ -10,6 +10,9 @@ export class Article {
     title: string
 
     @Column()
+    img_article: string
+
+    @Column()
     date: Date
 
     @Column()

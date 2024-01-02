@@ -10,6 +10,9 @@ export class Candidate {
     name: string
 
     @Column()
+    avatar: string
+
+    @Column()
     number: Number
 
     @Column()

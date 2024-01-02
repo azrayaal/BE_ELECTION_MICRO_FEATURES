@@ -33,3 +33,16 @@ export default new class VoterServices{
         }
     }
 }
+
+// CANDIDATE JOIN KE PARTY
+
+// VOTER JOIN KE CANDIDATE
+
+// USER / VOTER??
+
+// VOTER adalah kumpulan data dr USER
+// VOTER 
+// name (user)
+// address (user)
+// gender (user)
+// name_candidate (candidate)
