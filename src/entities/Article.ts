@@ -9,8 +9,8 @@ export class Article {
     @Column()
     title: string
 
-    @Column()
-    img_article: string
+    @Column({nullable: true})
+    image: string
 
     @Column()
     date: Date

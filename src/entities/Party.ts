@@ -9,8 +9,8 @@ export class Party {
     @Column()
     name: string
 
-    @Column()
-    img_party: string
+    @Column({nullable: true})
+    image: string
 
     @Column()
     chairman: string

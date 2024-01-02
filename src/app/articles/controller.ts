@@ -2,6 +2,7 @@ import {Request, Response} from "express"
 import ArticleServices from "./service"
 import ArticleSchema from "./validator"
 
+
 export default new class ArticleControllers {
 
     async create(req: Request, res: Response){
