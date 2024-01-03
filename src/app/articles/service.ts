@@ -45,4 +45,64 @@ export default new class NewsServices {
             }
         }
     }
+
+    async update(data: any) : Promise<object | string>{
+        try {
+
+            const {id, title, image, date, author, description} = data
+
+            const existingArticle = await this.ArticleRepository.findOne({where: {id}})
+
+            if (!existingArticle) {
+                return {
+                  message: `Article with id ${id} not found.`,
+                };
+              }
+
+                existingArticle.title = title;
+                existingArticle.image = image;
+                existingArticle.date = date;
+                existingArticle.author = author;
+                existingArticle.description = description;
+
+            //   const obj = this.ArticleRepository.create({
+            //     title: existingArticle.title,
+            //     image: existingArticle.image,
+            //     date: existingArticle.date,
+            //     author: existingArticle.author,
+            //     description: existingArticle.description,
+            // })
+
+            const updatedArticle = await this.ArticleRepository.save(existingArticle)
+
+            return {
+                message: 'Article updated successfully.',
+                data: updatedArticle,
+              };
+        } catch (error) {
+            return {
+                message: `Ooops something went wrong, please see this ==>> ${error}`
+            }
+        }
+    }
+
+    async delete(id: any) : Promise<object | string> {
+        try {
+
+            const checkId = await this.ArticleRepository.findOne({where:  { id }})
+            if(!checkId){
+                return `there is no id ${id}`
+            }
+
+            await this.ArticleRepository.delete(checkId)
+
+            return{
+                message: `Artcile has been deleted`
+            }
+        } catch (error) {
+            return{
+                message: `Ooops something went error during deleting, please see this ==>> ${error}`
+            }
+        }
+    }
 }
